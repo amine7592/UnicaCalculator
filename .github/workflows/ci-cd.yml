@@ -43,7 +43,7 @@ jobs:
   security:
     name: Security Scanning
     runs-on: ubuntu-latest
-
+    needs: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
         run: cat target/dependency-check-report.xml
 
   release:
-    needs: test
+    needs: security
     runs-on: ubuntu-latest
 
     steps:
